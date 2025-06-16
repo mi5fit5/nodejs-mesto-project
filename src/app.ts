@@ -19,6 +19,10 @@ app.use(express.json());
 app.use('/', usersRouter);
 app.use('/', cardsRouter);
 
+app.use((req: Request, res: Response) => {
+  res.status(404).send({ message: 'Not found' });
+});
+
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
 app.listen(+PORT);
