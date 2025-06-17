@@ -1,5 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
 import { errors } from 'celebrate';
 import usersRouter from './routes/users';
 import cardsRouter from './routes/cards';
@@ -14,6 +15,8 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(express.json());
+
+app.use(cookieParser());
 
 app.use(requestLogger);
 
